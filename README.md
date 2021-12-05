@@ -3,7 +3,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 *MANDATORY PART OF THE PROJECT (BornToBeRoot_task.pdf)*
 
-1. For more convenient work with VM let's first set up SSH.
+1. *SSH task*: 
 	In task for the project instead of default SSH port ("22") we need to set "4242" port. Also we need to restrict connection by SSH as "root" user.
 	1. In "/etc/ssh/sshd_config":
 		- Port 22
@@ -13,7 +13,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 	
 	![](Screenshots/etc-ssh-ssh_d%20config.PNG "ssh")
 
-2.  SUDO task: install sudo, limit wrong password tries, make own badpass message, log every command with "sudo", restict paths for sudo commands. 
+2.  *SUDO task*: install sudo, limit wrong password tries, make own badpass message, log every command with "sudo", restict paths for sudo commands. 
 	1. apt install sydo
 	2. In "/etc/sudoers":
 		- Defaults	secure_path="/paths/where/sudo/allowed:/devided/with/':'"
@@ -24,7 +24,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 ![](Screenshots/etc-sudoers.conf.PNG "sudo")
 
-3.	Password quality task: it has to expire every 30 days, the minimal interval between passwd modification = 2 days, users shoud recieve a warinig message 7 days before their password expires. Minlen of passwd = 10, It must contain an uppercase letter and a number.  Also, it must not contain more than 3 consecutive identical characters. The password must not include the name of the user. The password must have at least 7 characters that are not part of the former password.
+3.	*Password quality task*: it has to expire every 30 days, the minimal interval between passwd modification = 2 days, users shoud recieve a warinig message 7 days before their password expires. Minlen of passwd = 10, It must contain an uppercase letter and a number.  Also, it must not contain more than 3 consecutive identical characters. The password must not include the name of the user. The password must have at least 7 characters that are not part of the former password.
 	1. apt install libpam-pwquality
 	2. In "/etc/login.defs"
 		- PASS_MAX_DAYS 30
@@ -44,7 +44,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 ![](Screenshots/etc-security-pwquality_conf.PNG "pwquality")
 
-4. UFW firewall task: install and enable ufw. Allow only those ports that are used by your programs. 
+4. *UFW firewall task*: install and enable ufw. Allow only those ports that are used by your programs. 
 	1. apt install ufw
 	2. ufw enable
 	3. ufw default deny incoming
@@ -53,17 +53,15 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 ![](Screenshots/ufw.PNG "ufw")
 
-5. Monitoring script. Script shoud display some information on all terminals. Information contains: OS and its  kernel version, number of physical and virtual proc, current available RAM, current available disk space, proc load, date and time of last reboot, LVM status, number of active connections, number of users using the server, IPv4 and MAC, number of commands executed with sudo.
+5. *Monitoring script*: Script shoud display some information on all terminals. Information contains: OS and its  kernel version, number of physical and virtual proc, current available RAM, current available disk space, proc load, date and time of last reboot, LVM status, number of active connections, number of users using the server, IPv4 and MAC, number of commands executed with sudo.
 	*look at monitoring.sh*
 
-6. Make monitoring scripts running each 10 minutes
+6. *Make monitoring scripts running each 10 minutes*
 	1. apt install crontab
 	2. crontab -e -> add "*/10 * * * *  /usr/local/sbin/monitoring.sh"
-
 ![](Screenshots/crontab -e.PNG "cron")
-
-*BONUS PART OF THE PROJECT*
-7. Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.
+**BONUS PART OF THE PROJECT**
+7. *Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.*
 	1. apt install lighttpd
 		- sudo systemctl stop lighttpd.service
 		- sudo systemctl start lighttpd.service
@@ -122,7 +120,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 ![](Screenshots/WP_Tables.PNG "MariaDB+WP")
 
-8. Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!). During the defense, you will have to justify your choice. | I decided to set up FTP service.
+8. *Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!). During the defense, you will have to justify your choice*. | I decided to set up FTP service.
 	1. apt install vsftpd
 	2. systemctl start vsftpd 
 	3. systemctl enable vsftpd

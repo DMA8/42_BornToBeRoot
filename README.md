@@ -55,6 +55,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 
 5. *Monitoring script*: Script shoud display some information on all terminals. Information contains: OS and its  kernel version, number of physical and virtual proc, current available RAM, current available disk space, proc load, date and time of last reboot, LVM status, number of active connections, number of users using the server, IPv4 and MAC, number of commands executed with sudo.
 	*look at monitoring.sh*
+![](Screenshots/script_works.PNG "monitoring")
 
 6. *Make monitoring scripts running each 10 minutes*
 	1. apt install crontab

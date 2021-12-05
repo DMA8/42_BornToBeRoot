@@ -52,8 +52,9 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 6. *Make monitoring scripts running each 10 minutes*
 	1. apt install crontab
 	2. crontab -e -> add "*/10 * * * *  /usr/local/sbin/monitoring.sh"
-![](Screenshots/crontab -e.PNG "cron")
-**BONUS PART OF THE PROJECT**
+
+![](Screenshots/crontab%20-e.PNG "cron")
+
 7. *Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.*
 	1. apt install lighttpd
 		- sudo systemctl stop lighttpd.service

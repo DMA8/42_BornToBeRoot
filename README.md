@@ -16,20 +16,12 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 2.  *SUDO task*: install sudo, limit wrong password tries, make own badpass message, log every command with "sudo", restict paths for sudo commands. 
 	1. apt install sydo
 	2. In "/etc/sudoers":
-		- Defaults	secure_path="/paths/where/sudo/allowed:/devided/with/':'"
-		- Defaults	badpass_message="your own badpass message"
-		- Defaults	passwd_tries=3
-		- Defaults	requiretty (ignores "sudo" from scripts)
-		- Defaults	logfile="/var/log/sudo/sudo.log"\
 
 ![](Screenshots/etc-sudoers.conf.PNG "sudo")
 
 3.	*Password quality task*: it has to expire every 30 days, the minimal interval between passwd modification = 2 days, users shoud recieve a warinig message 7 days before their password expires. Minlen of passwd = 10, It must contain an uppercase letter and a number.  Also, it must not contain more than 3 consecutive identical characters. The password must not include the name of the user. The password must have at least 7 characters that are not part of the former password.
 	1. apt install libpam-pwquality
 	2. In "/etc/login.defs"
-		- PASS_MAX_DAYS 30
-		- PASS_MIN_DAYS 2
-		- PASS_WARN_AGE 7
 
 ![](Screenshots/etc-logind_defs.PNG "pwquality")
 

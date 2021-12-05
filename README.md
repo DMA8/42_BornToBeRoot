@@ -10,6 +10,7 @@ Setting up Debian (lighttpd, MariaDB, Wordpress, ftp, lvm, ssh, ufw, sudo, pwqua
 		- PermitRootLogin no
 	2. go to VirtualBox, open network settings for VM and add port 4242 in "Port forwading".
 	3. to connect via SSH to the VM use "ssh "username"@"ip_address" -p 4242". (I used NAT so for me it was like "syolando@localhost -p 4242")
+	![alt text](screenshots/etc-ssh-ssh_d config.PNG)
 
 2.  SUDO task: install sudo, limit wrong password tries, make own badpass message, log every command with "sudo", restict paths for sudo commands. 
 	1. apt install sydo
